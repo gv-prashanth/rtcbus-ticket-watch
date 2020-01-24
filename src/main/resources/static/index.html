@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="https://visjs.github.io/vis-network/dist/vis-network.min.js"></script>
+<link
+	href="https://visjs.github.io/vis-network/dist/vis-network.min.css"
+	rel="stylesheet" type="text/css" />
+<title>RTC Bus Ticket Watch</title>
+
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $( function() {
+	$( "#input4" ).datepicker();
+    $( "#input4" ).datepicker( "option", "dateFormat", "dd/mm/yy" );
+  } );
+  </script>
+
+<style>
+.mynetwork {
+	width: 50px;
+	height: 50px;
+	border: 1px solid lightgray;
+	float: left;
+}
+
+.mynetwork2 {
+	height: 300px;
+	border: 1px solid lightgray;
+}
+
+.center {
+	position: relative;
+}
+
+.center div {
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.textOutput {
+	font-family: Calibri;
+	flex: 30%;
+	border: thick solid grey;
+	border-radius: 8px;
+	margin: 10px;
+	padding: 10px;
+	background: #F0F0F0;
+}
+
+ul li {
+	margin: 7px;
+}
+
+.image {
+	flex: 70%;
+	font-family: Calibri;
+	border: thick solid grey;
+	border-radius: 8px;
+	margin: 10px;
+	padding: 10px;
+	background: #F0F0F0;
+}
+</style>
+</head>
+<body onload="fetch();populateFromTo();">
+	<h1>RTC Bus Ticket Watch</h1>
+
+	<div id="info">
+		<b>A watch application to notify you (via email) about any newly added buses / seats.</b>
+	</div>
+	<div style="display: flex;">
+		<div class="textOutput" id="image2">
+			<div id="manage2" class="manage">
+				<b>Create a watch request:</b><br><br>
+				<table>
+				<tr><td>From:</td><td><select id="input1"></td></tr>
+				<tr><td>To:</td><td><select id="input2"></td></tr>
+				<tr><td>Corp:</td><td><select id="input3"><option value="APSRTC">APSRTC</option><option value="TSRTC">TSRTC</option></select></td></tr>
+				<tr><td>Date:</td><td><input type="text" id="input4" /></td></tr>
+				<tr><td>Email:</td><td><input type="text" id="input5" onblur="validateEmail(this);"/></td></tr>
+				</table>
+				<br>
+				<button id="identify" type="button">Request</button>
+			</div>
+			<br> <b><div id="notification4" class="notification"></div></b><br>
+			<b><div id="result2"></div></b>
+		</div>
+		<div class="image" id="image">
+			<div id="manage" class="manage">
+				<b>Active watch requests</b>
+			</div>
+			<br>
+			<div id="notification3" class="notification"></div>
+			<br>
+			<div id="result"></div>
+		</div>
+	</div>
+</body>
+<script src="javascript.js"></script>
+</html>
