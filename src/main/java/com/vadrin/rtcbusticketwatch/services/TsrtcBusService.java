@@ -18,14 +18,13 @@ public class TsrtcBusService implements BusService {
   @Override
   public int getNumberOfAvailabeSeats(Request request) throws ExceptionWhileFetchingFromCorporation {
     RestTemplate restTemplate = restTemplateBuilder.build();
-    String response = restTemplate.postForObject(
-        "https://www.tsrtconline.in/oprs-web/forward/booking/avail/services.do?txtJourneyDate="
-            + request.getJourneyDate() + "&startPlaceId=" + request.getStartPlaceId()
-            + "&endPlaceId=" + request.getEndPlaceId(),
-        null, String.class);
+    String response = restTemplate
+        .postForObject("https://www.tsrtconline.in/oprs-web/forward/booking/avail/services.do?txtJourneyDate="
+            + request.getJourneyDate() + "&startPlaceId=" + request.getStartPlaceId() + "&endPlaceId="
+            + request.getEndPlaceId(), null, String.class);
     Pattern pattern = Pattern.compile("fwTotalSeats\" value=\"(.*?)\"");
     Matcher matcher = pattern.matcher(response);
-    if(matcher.find()) {
+    if (matcher.find()) {
       return Integer.valueOf(matcher.group(1));
     }
     throw new ExceptionWhileFetchingFromCorporation();

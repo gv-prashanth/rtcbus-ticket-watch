@@ -6,7 +6,9 @@ public class Request {
   private String endPlaceId;
   private String journeyDate;
   private Corporation corporation;
-  private String email;
+  private boolean isNotified;
+  private int prevSeatCount;
+  private String notificationMessage;
 
   public String getStartPlaceId() {
     return startPlaceId;
@@ -24,18 +26,28 @@ public class Request {
     return corporation;
   }
 
-  public String getEmail() {
-    return email;
+  public boolean isNotified() {
+    return isNotified;
   }
 
-  public Request(String startPlaceId, String endPlaceId, String journeyDate,
-      Corporation corporation, String email) {
-    super();
-    this.startPlaceId = startPlaceId;
-    this.endPlaceId = endPlaceId;
-    this.journeyDate = journeyDate;
-    this.corporation = corporation;
-    this.email = email;
+  public void setNotified(boolean isNotified) {
+    this.isNotified = isNotified;
+  }
+
+  public int getPrevSeatCount() {
+    return prevSeatCount;
+  }
+
+  public void setPrevSeatCount(int prevSeatCount) {
+    this.prevSeatCount = prevSeatCount;
+  }
+
+  public String getNotificationMessage() {
+    return notificationMessage;
+  }
+
+  public void setNotificationMessage(String notificationMessage) {
+    this.notificationMessage = notificationMessage;
   }
 
   public Request() {
