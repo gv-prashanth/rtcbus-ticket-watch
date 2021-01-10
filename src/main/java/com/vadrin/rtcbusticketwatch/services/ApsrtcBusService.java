@@ -29,7 +29,7 @@ public class ApsrtcBusService implements BusService {
     HttpHeaders headers = new HttpHeaders();
     headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
     headers.setContentType(MediaType.APPLICATION_JSON);
-    headers.add("user-agent", "Mozilla/5.0 Firefox/26.0");
+    headers.add("User-Agent", "PostmanRuntime/7.26.8");
     HttpEntity<String> entity = new HttpEntity<>(headers);
     ResponseEntity<String> response = restTemplate
         .exchange("https://www.apsrtconline.in/oprs-web/forward/booking/avail/services.do?txtJourneyDate="
