@@ -31,13 +31,13 @@ public class ApsrtcBusService implements BusService {
     headers.setContentType(MediaType.APPLICATION_JSON);
     headers.set("user-agent", "PostmanRuntime/7.26.8");
     headers.set("User-Agent", "PostmanRuntime/7.26.8");
-    headers.set("Host", "http://www.google.com");
     headers.set("host", "http://www.google.com");
+    headers.set("Host", "http://www.google.com");
     HttpEntity<String> entity = new HttpEntity<>(headers);
     ResponseEntity<String> response = restTemplate
         .exchange("https://www.apsrtconline.in/oprs-web/forward/booking/avail/services.do?txtJourneyDate="
             + request.getJourneyDate() + "&startPlaceId=" + request.getStartPlaceId() + "&endPlaceId="
-            + request.getEndPlaceId(), HttpMethod.POST, entity, String.class);
+            + request.getEndPlaceId(), HttpMethod.GET, entity, String.class);
     Pattern pattern = Pattern.compile("fwTotalSeats\" value=\"(.*?)\"");
     Matcher matcher = pattern.matcher(response.getBody());
     if (matcher.find()) {
