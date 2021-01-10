@@ -17,6 +17,10 @@ function request() {
 	var g = document.getElementById("input3");
 	var input3 = g.options[g.selectedIndex].value;
 	var input4 = document.getElementById("input4").value;
+	if(input1=='' || input2=='' || input3=='' || input4==''){
+		document.getElementById("notification4").innerHTML = "Invalid Request. Please fill all the fields.";
+		return;
+	}
 	var jsonRequest = {
 		"startPlaceId": input1,
 		"endPlaceId": input2,
