@@ -29,15 +29,16 @@ public class ApsrtcBusService implements BusService {
     HttpHeaders headers = new HttpHeaders();
     headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
     headers.setContentType(MediaType.APPLICATION_JSON);
-    headers.set("user-agent", "PostmanRuntime/7.26.8");
-    headers.set("User-Agent", "PostmanRuntime/7.26.8");
-    headers.set("host", "http://www.google.com");
-    headers.set("Host", "http://www.google.com");
+    headers.set("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36");
+    headers.set("host", "https://www.apsrtconline.in");
+    headers.set("origin", "https://www.apsrtconline.in");
+    headers.set("referer", "https://www.apsrtconline.in/oprs-web/avail/services.do");
+    headers.set("x-requested-with", "XMLHttpRequest");
     HttpEntity<String> entity = new HttpEntity<>(headers);
     ResponseEntity<String> response = restTemplate
         .exchange("https://www.apsrtconline.in/oprs-web/forward/booking/avail/services.do?txtJourneyDate="
             + request.getJourneyDate() + "&startPlaceId=" + request.getStartPlaceId() + "&endPlaceId="
-            + request.getEndPlaceId(), HttpMethod.GET, entity, String.class);
+            + request.getEndPlaceId(), HttpMethod.POST, entity, String.class);
     Pattern pattern = Pattern.compile("fwTotalSeats\" value=\"(.*?)\"");
     Matcher matcher = pattern.matcher(response.getBody());
     if (matcher.find()) {
